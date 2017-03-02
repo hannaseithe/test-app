@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { AlertModule, DropdownModule } from 'ng2-bootstrap';
 import { EmojifyModule } from 'angular2-emojify';
 
 
@@ -13,6 +13,7 @@ import { AboutComponent } from './components/about/about.component';
 import { routing } from './app.routing';
 import { EmomapPipe } from './pipes/emomap.pipe';
 import { KeysArrayPipe } from './pipes/keysArray.pipe';
+import { FilterStatePipe } from './pipes/filterState.pipe';
 
 
 @NgModule({
@@ -22,13 +23,15 @@ import { KeysArrayPipe } from './pipes/keysArray.pipe';
     FeelingsListComponent,
     AboutComponent,
     EmomapPipe,
-    KeysArrayPipe
+    KeysArrayPipe,
+    FilterStatePipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AlertModule.forRoot(),
+    DropdownModule.forRoot(),
     EmojifyModule,
     routing
   ],

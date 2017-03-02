@@ -1,3 +1,7 @@
 .edited {
 	opacity:0.5;
 }
+
+.dropdown-item {
+	cursor: pointer;
+}

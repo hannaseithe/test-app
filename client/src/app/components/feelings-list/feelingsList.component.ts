@@ -14,6 +14,7 @@ export class FeelingsListComponent {
     @Output() onDelete = new EventEmitter<boolean>();
     editId: string;
     feelingStates: Object;
+    filterState: string;
 
     constructor() {
         this.feelingStates = feelingStatesModel;
@@ -32,5 +33,7 @@ export class FeelingsListComponent {
     deleteFeeling( id ) {
         this.onDelete.emit(id);
     }
+    
+    filterForStates(key) {}
 
 }
