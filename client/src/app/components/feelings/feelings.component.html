@@ -12,8 +12,9 @@
 				| emojify }}
 			</span> <span class="label label-primary">{{state}}</span>
 		</div>
-		<input *ngIf="!editMode" (click)="addFeeling($event)" type="button" name="submitButton" value="Submit" class="btn btn-link">
-		<input *ngIf="editMode" (click)="updateFeeling(editId)" type="button" name="submitButton" value="Update" class="btn btn-link">
+		<input *ngIf="!editMode" (click)="addFeeling($event)" type="button" name="submitButton" value="Add a new Feeling" class="btn btn-link">
+		<input *ngIf="editMode" (click)="updateFeeling(editId)" type="button" name="submitButton" value="Update the Feeling" class="btn btn-primary">
+		<input *ngIf="editMode" (click)="cancelUpdate()" type="button" name="submitButton" value="Cancel" class="btn btn-primary">
 	</div>
 </form>
 

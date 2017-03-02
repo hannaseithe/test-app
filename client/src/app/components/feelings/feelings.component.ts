@@ -4,11 +4,19 @@ import { Feeling } from '../../../Feeling';
 import { feelingStatesModel } from '../../models/FeelingStates.model';
 import { FeelingsListComponent } from '../feelings-list/feelingsList.component';
 
+function cleanForm(that) {
+        that.editId = undefined;
+        that.name = "";
+        that.description = "";
+        that.state = "";
+    }
+
 @Component( {
     selector: 'feelings',
     templateUrl: './feelings.component.html',
     styleUrls: ['./feelings.component.css']
 })
+
 export class FeelingsComponent {
     feelings: Feeling[];
     feelingStates: Object;
@@ -40,9 +48,6 @@ export class FeelingsComponent {
             });
     }
 
-    
-
-
     updateFeeling( id: string ) {
         var feelings = this.feelings;
         var that = this;
@@ -58,14 +63,16 @@ export class FeelingsComponent {
                     if ( feelings[i]._id == id ) {
                         feelings[i] = feeling;
                         that.editMode = false;
-                        that.editId = undefined;
-                        that.name = "";
-                        that.description = "";
-                        that.state = "";
+                        cleanForm(that);
                     }
 
                 }
             })
+    }
+    
+    cancelUpdate() {
+        this.editMode = false;
+        cleanForm(this);
     }
     
     //eventListeners
