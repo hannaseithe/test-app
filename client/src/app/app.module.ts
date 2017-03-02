@@ -8,6 +8,7 @@ import { EmojifyModule } from 'angular2-emojify';
 
 import { AppComponent } from './app.component';
 import { FeelingsComponent } from './components/feelings/feelings.component';
+import { FeelingsListComponent } from './components/feelings-list/feelingsList.component';
 import { AboutComponent } from './components/about/about.component';
 import { routing } from './app.routing';
 import { EmomapPipe } from './pipes/emomap.pipe';
@@ -18,6 +19,7 @@ import { KeysArrayPipe } from './pipes/keysArray.pipe';
   declarations: [
     AppComponent,
     FeelingsComponent,
+    FeelingsListComponent,
     AboutComponent,
     EmomapPipe,
     KeysArrayPipe

@@ -17,17 +17,4 @@
 	</div>
 </form>
 
-<div class="feeling-list">
-	<div *ngFor="let feeling of feelings" [ngClass]="{'edited': editMode && feeling._id === editId}" class="row">
-		<div class="col-md-1">{{feelingStates[feeling.state] | emojify }}</div>
-		<div class="col-md-3">{{feeling.name}}</div>
-		<div class="col-md-6">{{feeling.description}}</div>
-		<div class="col-md-2">
-			<input type="button" (click)="deleteFeeling(feeling._id)"
-				value="Delete" class="btn">
-			<input type="button" (click)="startEditFeeling(feeling)"
-				value="Edit" class="btn">
-		</div>
-	</div>
-
-</div>
+<feelings-list [feelings]="feelings" [editMode]="editMode" (onStartEditing)="onStartEditing($event)" (onDelete)="onDelete($event)"></feelings-list>

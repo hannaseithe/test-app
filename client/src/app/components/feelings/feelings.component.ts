@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FeelingService } from '../../services/feeling.service';
 import { Feeling } from '../../../Feeling';
 import { feelingStatesModel } from '../../models/FeelingStates.model';
+import { FeelingsListComponent } from '../feelings-list/feelingsList.component';
 
 @Component( {
     selector: 'feelings',
@@ -39,27 +40,8 @@ export class FeelingsComponent {
             });
     }
 
-    deleteFeeling( id ) {
-        var feelings = this.feelings;
-        this.feelingService.deleteFeeling( id )
-            .subscribe( data => {
-                if ( data.n == 1 ) {
-                    for ( var i = 0; i < feelings.length; i++ ) {
-                        if ( feelings[i]._id == id ) {
-                            feelings.splice( i, 1 )
+    
 
-                        }
-                    }
-                }
-            })
-    }
-    startEditFeeling( feeling ) {
-        this.editMode = true;
-        this.name = feeling.name;
-        this.description = feeling.description;
-        this.state = feeling.state;
-        this.editId = feeling._id;
-    }
 
     updateFeeling( id: string ) {
         var feelings = this.feelings;
@@ -77,8 +59,36 @@ export class FeelingsComponent {
                         feelings[i] = feeling;
                         that.editMode = false;
                         that.editId = undefined;
+                        that.name = "";
+                        that.description = "";
+                        that.state = "";
                     }
 
+                }
+            })
+    }
+    
+    //eventListeners
+    
+    onStartEditing(editObject) {
+        this.editMode = true;
+        this.name = editObject.name;
+        this.description = editObject.description;
+        this.state = editObject.state;
+        this.editId = editObject._id;
+      }
+    
+    onDelete( id ) {
+        var feelings = this.feelings;
+        this.feelingService.deleteFeeling( id )
+            .subscribe( data => {
+                if ( data.n == 1 ) {
+                    for ( var i = 0; i < feelings.length; i++ ) {
+                        if ( feelings[i]._id == id ) {
+                            feelings.splice( i, 1 )
+
+                        }
+                    }
                 }
             })
     }
