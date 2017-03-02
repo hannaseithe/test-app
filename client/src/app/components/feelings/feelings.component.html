@@ -1,0 +1,34 @@
+<h1>Feelings Form</h1>
+<form class="well">
+	<div class="form-group">
+http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1336
+		<input type="text" [(ngModel)]="name" name="name" class="form-control"
+			placeholder="Add a New Feeling"> <input type="text"
+			[(ngModel)]="description" name="description" class="form-control"
+			placeholder="Add a Description">
+		<div class="well">
+			Select the Feeling State: <span
+				*ngFor="let key of feelingStates | keysArray "> <input
+				type="radio" [(ngModel)]="state" name="state" [value]="key">{{feelingStates[key]
+				| emojify }}
+			</span> <span class="label label-primary">{{state}}</span>
+		</div>
+		<input *ngIf="!editMode" (click)="addFeeling($event)" type="button" name="submitButton" value="Submit" class="btn btn-link">
+		<input *ngIf="editMode" (click)="updateFeeling(editId)" type="button" name="submitButton" value="Update" class="btn btn-link">
+	</div>
+</form>
+
+<div class="feeling-list">
+	<div *ngFor="let feeling of feelings" [ngClass]="{'edited': editMode && feeling._id === editId}" class="row">
+		<div class="col-md-1">{{feelingStates[feeling.state] | emojify }}</div>
+		<div class="col-md-3">{{feeling.name}}</div>
+		<div class="col-md-6">{{feeling.description}}</div>
+		<div class="col-md-2">
+			<input type="button" (click)="deleteFeeling(feeling._id)"
+				value="Delete" class="btn">
+			<input type="button" (click)="startEditFeeling(feeling)"
+				value="Edit" class="btn">
+		</div>
+	</div>
+
+</div>
